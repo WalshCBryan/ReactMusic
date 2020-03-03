@@ -17,8 +17,17 @@ public class Song {
     @Column
     private int duration_in_sec;
 
-    @ManyToMany(mappedBy = "albums")
+    @ManyToMany(mappedBy = "songs")
     private List<Album> albums;
+
+    @ManyToMany
+    @JoinTable
+            (
+                    name="playlist_song",
+                    joinColumns={@JoinColumn(name="playlist_id")},
+                    inverseJoinColumns={@JoinColumn(name="song_id")}
+            )
+    private List<Playlist> playlists;
 
     public Song(){};
 
@@ -53,4 +62,14 @@ public class Song {
     public void setAlbums(List<Album> albums) {
         this.albums = albums;
     }
+
+    public List<Playlist> getPlaylists() {
+        return playlists;
+    }
+
+    public void setPlaylists(List<Playlist> playlists) {
+        this.playlists = playlists;
+    }
+
+
 }

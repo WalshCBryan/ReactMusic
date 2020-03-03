@@ -14,7 +14,7 @@ public class Artist {
     @Column
     private String name;
 
-    @ManyToMany(mappedBy = "albums")
+    @ManyToMany(mappedBy = "artists")
     private List<Album> albums;
 
     public Artist(){};
@@ -42,4 +42,6 @@ public class Artist {
     public void setAlbums(List<Album> albums) {
         this.albums = albums;
     }
+
+
 }
